@@ -5,9 +5,10 @@
     </entity>
     <entity name="Garment" representedClassName="Garment" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="timeStamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="Garment" positionX="-63" positionY="-18" width="128" height="44"/>
+        <element name="Garment" positionX="-63" positionY="-18" width="128" height="59"/>
         <element name="ErrorLog" positionX="-54" positionY="-9" width="128" height="44"/>
     </elements>
 </model>

@@ -31,7 +31,7 @@
         <!--List-->
         <scene sceneID="DXQ-jx-dBa">
             <objects>
-                <viewController id="mRH-kp-7v5" sceneMemberID="viewController">
+                <viewController id="mRH-kp-7v5" customClass="GarmentList" customModule="AddGarment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bCV-nD-reV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -54,7 +54,7 @@
                                         <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomGarmentListCell_SBID" textLabel="Eyk-Bv-uyI" style="IBUITableViewCellStyleDefault" id="amI-Ry-Gko">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomGarmentListCell_SBID" textLabel="Eyk-Bv-uyI" style="IBUITableViewCellStyleDefault" id="amI-Ry-Gko" customClass="GarmentListCustomCell" customModule="AddGarment" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="24.5" width="414" height="58.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="amI-Ry-Gko" id="MYp-WV-LY4">
@@ -83,7 +83,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BxT-En-lFp"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
                         <constraints>
                             <constraint firstItem="gBF-eE-IgN" firstAttribute="leading" secondItem="BxT-En-lFp" secondAttribute="leading" id="2rK-bP-Iyu"/>
                             <constraint firstAttribute="bottomMargin" secondItem="gBF-eE-IgN" secondAttribute="bottom" constant="-34" id="Rc2-pJ-zAh"/>
@@ -97,25 +97,17 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="oZe-C5-QHG" kind="presentation" id="xeV-Ih-vBa"/>
+                        <outlet property="garmentTableView" destination="r6N-2v-RlY" id="LLN-Bv-dzM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10v-3a-C77" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="289.85507246376812" y="138.61607142857142"/>
         </scene>
-        <!--Storyboard Reference-->
-        <scene sceneID="vLl-at-bTU">
-            <objects>
-                <viewControllerPlaceholder id="oZe-C5-QHG" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nGV-eo-Omw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="967" y="139"/>
-        </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

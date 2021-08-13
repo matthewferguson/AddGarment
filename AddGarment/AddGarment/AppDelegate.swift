@@ -6,14 +6,20 @@
 //
 
 import UIKit
+import CoreData
+import DataFlowFunnelCD
+
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var refDataFlowFunnel:DataFlowFunnel = DataFlowFunnel.shared
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        self.refDataFlowFunnel.setModelName(to: "AddGarmentModel" )
+        self.refDataFlowFunnel.setTargetBundleIdentifier(bundleId: "com.matthewferguson.AddGarment")
+        //DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
+        //self.removeDataOnTerminate()
         return true
     }
 

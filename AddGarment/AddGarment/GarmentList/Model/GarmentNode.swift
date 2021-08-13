@@ -9,4 +9,5 @@ import Foundation
 
 struct GarmentNode {
     var garmentName:String?
+    var timeStamp:Date?
 }

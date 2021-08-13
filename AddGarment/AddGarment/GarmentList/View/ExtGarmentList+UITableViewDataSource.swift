@@ -12,34 +12,22 @@ import UIKit
 extension GarmentList: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView,numberOfRowsInSection section: Int) -> Int {
-      
-      
-      return garments.count
+    return garments.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      
-      var cell = self.tableView.dequeueReusableCell(withIdentifier: "CharacterListCustomCell_SBID") as? CharacterListCustomCell
-      
-      if cell == nil {
-          cell = UITableViewCell(style:.default, reuseIdentifier:"CharacterListCustomCell_SBID") as? CharacterListCustomCell
-      }
-  
-      var character: BBCharacter?
     
-      if isFiltering {
-          //candy = filteredCandies[indexPath.row]
-          character = self.characters[indexPath.row]
-      } else {
-          character = self.characters[indexPath.row]
-      }
-      //print(character!)
-      //print("BBCharacter : \(String(describing: character?.charName)) at index.row == \(indexPath.row)")
-      cell?.characterImageView.image = UIImage(data: (character?.imageData)!)
-      cell?.characterName.text = character?.charName
+    var cell = self.garmentTableView.dequeueReusableCell(withIdentifier: "CustomGarmentListCell_SBID") as? GarmentListCustomCell
       
-      return cell!
+    if cell == nil {
+        cell = UITableViewCell(style:.default, reuseIdentifier:"CustomGarmentListCell_SBID") as? GarmentListCustomCell
+    }
+    
+    let singleGarment = self.garments[indexPath.item]
+    cell?.garmentName.text = singleGarment.garmentName
+    return cell!
   }
+    
 }
 
 
