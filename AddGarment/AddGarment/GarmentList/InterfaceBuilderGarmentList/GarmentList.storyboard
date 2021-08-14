@@ -41,6 +41,9 @@
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="37J-jz-iHo">
                                         <rect key="frame" x="20" y="0.0" width="374" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31" id="ozP-YA-uSy"/>
+                                        </constraints>
                                         <segments>
                                             <segment title="Alpha"/>
                                             <segment title="Creation Time"/>
@@ -71,8 +74,15 @@
                                                         </label>
                                                     </subviews>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="garmentName" destination="Eyk-Bv-uyI" id="hk2-KO-qAu"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="mRH-kp-7v5" id="Eyy-Iv-aDs"/>
+                                            <outlet property="delegate" destination="mRH-kp-7v5" id="v5N-Dv-8qb"/>
+                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <constraints>
@@ -88,6 +98,7 @@
                         <constraints>
                             <constraint firstItem="gBF-eE-IgN" firstAttribute="leading" secondItem="BxT-En-lFp" secondAttribute="leading" id="2rK-bP-Iyu"/>
                             <constraint firstAttribute="bottomMargin" secondItem="gBF-eE-IgN" secondAttribute="bottom" constant="-34" id="Rc2-pJ-zAh"/>
+                            <constraint firstItem="r6N-2v-RlY" firstAttribute="bottom" secondItem="BxT-En-lFp" secondAttribute="bottom" constant="34" id="aNp-zQ-WnY"/>
                             <constraint firstItem="gBF-eE-IgN" firstAttribute="centerX" secondItem="bCV-nD-reV" secondAttribute="centerX" id="sVu-O7-DWp"/>
                             <constraint firstItem="gBF-eE-IgN" firstAttribute="top" secondItem="BxT-En-lFp" secondAttribute="top" constant="15" id="xZM-TA-2CM"/>
                         </constraints>
@@ -95,17 +106,29 @@
                     <navigationItem key="navigationItem" title="List" largeTitleDisplayMode="never" id="yhS-Od-na3">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus.circle" catalog="system" style="done" id="k1E-g8-fte">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="openGarmentAdd" destination="mRH-kp-7v5" id="OPq-Wi-xfH"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addBarButton" destination="k1E-g8-fte" id="Iia-LK-xeN"/>
                         <outlet property="garmentTableView" destination="r6N-2v-RlY" id="LLN-Bv-dzM"/>
                         <outlet property="sortFilterSegmentControl" destination="37J-jz-iHo" id="RiA-H7-oRv"/>
+                        <segue destination="X3C-R7-idx" kind="presentation" identifier="GarmentList_GarmentAdd_Segue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="TeH-Pt-6T9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10v-3a-C77" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="289.85507246376812" y="138.61607142857142"/>
+        </scene>
+        <!--GarminAdd_SBID-->
+        <scene sceneID="Ipf-02-uav">
+            <objects>
+                <viewControllerPlaceholder storyboardName="GarmentAdd" referencedIdentifier="GarminAdd_SBID" id="X3C-R7-idx" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vzk-8G-ssU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="891" y="139"/>
         </scene>
     </scenes>
     <resources>

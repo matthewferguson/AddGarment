@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import DataFlowFunnelCD
 
-class GarmentList : UIViewController {
+class GarmentList : UIViewController, UITableViewDelegate {
     
     @IBOutlet var garmentTableView: UITableView?
     
@@ -22,11 +22,16 @@ class GarmentList : UIViewController {
     var isSortedByAlpha:Bool = true
     
     var contentionProtectionQueue:OperationQueue = OperationQueue()
+    var reduceReloadQueue:OperationQueue = OperationQueue()
     
     //MARK:- View Controller Lifecycle
     
     override func viewDidLoad() {
+        
+        self.garmentTableView?.delegate = self
+        
         contentionProtectionQueue.maxConcurrentOperationCount = 1
+        reduceReloadQueue.maxConcurrentOperationCount = 1
         setupFetchControllers()
         setupSubViews()
     }
@@ -56,34 +61,6 @@ class GarmentList : UIViewController {
             .foregroundColor: UIColor.black,
             .font: UIFont(name: "Noteworthy-Bold", size: 18)!
         ]
-        
-        
-        /*
-        if garments.count <= 0 {
-            self.garmentTableView?.isHidden = false
-        }
-        else {
-            self.garmentTableView?.isHidden = false
-        } */
-        
-        
-        
-        
-        
-        /*
-        self.btnLookup?.layer.cornerRadius = 6
-        self.btnLookup?.layer.borderWidth = 1
-        self.btnLookup?.layer.borderColor = UIColor.getCustomDarkGreyColor().cgColor
-        self.btnLookup?.layer.masksToBounds = true
-        self.btnLookup?.clipsToBounds = true
-        self.btnLookup?.backgroundColor = UIColor.clear
-        */
-    
-        /*
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-        self.navigationController?.navigationBar.barTintColor = UIColor.getCustomPurpleColor()
-        view.backgroundColor = UIColor.getCustomLightGreyColor()
-        */
         
     }
 
@@ -133,32 +110,35 @@ class GarmentList : UIViewController {
                         for (index, singleGarment) in collectionGarments.enumerated() {
                             print("------- Single Garment ----------")
                             print("Garment at location index == \(index):")
-                            print("     singleGarment.character_id == \(String(describing: singleGarment.name))" )
-                            print("     singleGarment.appearance_array == \(singleGarment.timeStamp!)" )
+                            print("     singleGarment.singleGarment.name == \(String(describing: singleGarment.name))" )
+                            print("     singleGarment.singleGarment.timeStamp == \(singleGarment.timeStamp! as Date)" )
                             print("----------------------")
                             
-                            let sg = GarmentNode(garmentName: singleGarment.name, timeStamp: singleGarment.timeStamp)
+                            let sg = GarmentNode(garmentName: singleGarment.name )
                             self.garments.append(sg)
                         }
                     } catch let error as NSError {
                         print("Failed to execute. \(error), \(error.userInfo)")
                     }
                 }
+                let count = self.reduceReloadQueue.operationCount
                 
-                if self.contentionProtectionQueue.operationCount == 0 {
-                    let reload = BlockOperation {
-                        self.garmentTableView?.reloadData()
+                if (self.reduceReloadQueue.operationCount <= 0) {
+                    let reloadTableView = BlockOperation {
+                        DispatchQueue.main.async {
+                            self.garmentTableView?.reloadData()
+                        }
                     }
-                    self.contentionProtectionQueue.addOperation(reload)
+                    self.reduceReloadQueue.addOperation(reloadTableView)
                 }
-                
+                print("try")
             } else {
                 
                 
                 let managedContextCharacter =  DataFlowFunnel.shared.getPersistentContainerRef().viewContext
                 let fetchRequest = NSFetchRequest<Garments>(entityName: "Garments")
                 
-                let sortDescriptor = NSSortDescriptor(key: "timeStamp", ascending:true)
+                let sortDescriptor = NSSortDescriptor(key: "timeStamp", ascending:false)
                 fetchRequest.sortDescriptors = [sortDescriptor]
                 
                 managedContextCharacter.performAndWait {
@@ -179,7 +159,7 @@ class GarmentList : UIViewController {
                             print("     singleGarment.appearance_array == \(singleGarment.timeStamp!)" )
                             print("----------------------")
                             
-                            let sg = GarmentNode(garmentName: singleGarment.name, timeStamp: singleGarment.timeStamp)
+                            let sg = GarmentNode(garmentName: singleGarment.name)
                             self.garments.append(sg)
                             
                         }
@@ -188,11 +168,13 @@ class GarmentList : UIViewController {
                     }
                 }
                 
-                if self.contentionProtectionQueue.operationCount == 0 {
-                    let reload = BlockOperation {
-                        self.garmentTableView?.reloadData()
+                if self.reduceReloadQueue.operationCount == 0 {
+                    let reloadTableView = BlockOperation {
+                        DispatchQueue.main.async {
+                            self.garmentTableView?.reloadData()
+                        }
                     }
-                    self.contentionProtectionQueue.addOperation(reload)
+                    self.reduceReloadQueue.addOperation(reloadTableView)
                 }
             }
             
@@ -217,7 +199,7 @@ class GarmentList : UIViewController {
             let garmentsCollection = self.fetchAllGarmentsRequestController.fetchedObjects!
         
             for (singleGarment) in garmentsCollection {
-                let garmentNode = GarmentNode(garmentName: singleGarment.name)
+                let garmentNode = GarmentNode(garmentName: singleGarment.name )
                 self.garments.append(garmentNode)
             }
         
@@ -257,8 +239,14 @@ class GarmentList : UIViewController {
     
     //MARK:- Navigation Support
     
-    func openGarmentAdd(){
-        self.performSegue(withIdentifier: "GarmentList_GarmentAdd_Segue", sender: self)
+    @IBAction func openGarmentAdd(){
+        
+        let mainView:UIStoryboard = UIStoryboard(name: "GarmentAdd", bundle: nil)
+        let myVC = mainView.instantiateViewController(withIdentifier: "GarminAdd_SBID") as! GarmentAdd
+        let navController = UINavigationController(rootViewController: myVC)
+        self.navigationController?.present(navController, animated: true, completion: nil)
+    
+        //self.performSegue(withIdentifier: "GarmentList_GarmentAdd_Segue", sender: self)
     }
     
     
@@ -266,12 +254,16 @@ class GarmentList : UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "SearchCity_SearchCityResult_Segue"{
+        if segue.identifier == "GarmentList_GarmentAdd_Segue"{
+            
+            /*
             let viewController:SearchCityResult = segue.destination as! SearchCityResult
             viewController.forecastCollection  = self.forecastCollection
             let backItem = UIBarButtonItem()
             backItem.title = searchString
             navigationItem.backBarButtonItem = backItem
+             */
+            
         }
         
     }

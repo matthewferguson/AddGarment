@@ -24,7 +24,11 @@ extension GarmentList: UITableViewDataSource {
     }
     
     let singleGarment = self.garments[indexPath.item]
-    cell?.garmentName.text = singleGarment.garmentName
+    print(singleGarment.garmentName!)
+    if singleGarment.garmentName != nil {
+        //cell?.garmentName.text = (singleGarment.garmentName ?? <#default value#>) as String
+    }
+    cell?.garmentName.text = singleGarment.garmentName!
     return cell!
   }
     

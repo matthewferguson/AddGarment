@@ -30,7 +30,7 @@ extension GarmentList: NSFetchedResultsControllerDelegate {
                 switch anObject {
                     case let garmentInsert as Garments:
                         
-                        let garmentNode = GarmentNode(garmentName: garmentInsert.name)
+                        let garmentNode = GarmentNode(garmentName: garmentInsert.name )
                         DispatchQueue.main.async {
                             self.addToGarments(with: garmentNode, sortCmd: self.isSortedByAlpha)
                         }

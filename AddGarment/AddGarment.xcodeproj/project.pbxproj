@@ -26,6 +26,7 @@
 		5678AC4226C74DD900D7FA6E /* CommonFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678AC4126C74DD900D7FA6E /* CommonFont.swift */; };
 		5678AC4526C77FF600D7FA6E /* GarmentAdd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5678AC4426C77FF600D7FA6E /* GarmentAdd.storyboard */; };
 		5678AC4926C7807000D7FA6E /* GarmentAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678AC4826C7807000D7FA6E /* GarmentAdd.swift */; };
+		5678AC4B26C84CEE00D7FA6E /* AddGarmentNameOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678AC4A26C84CEE00D7FA6E /* AddGarmentNameOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		5678AC4126C74DD900D7FA6E /* CommonFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFont.swift; sourceTree = "<group>"; };
 		5678AC4426C77FF600D7FA6E /* GarmentAdd.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GarmentAdd.storyboard; sourceTree = "<group>"; };
 		5678AC4826C7807000D7FA6E /* GarmentAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarmentAdd.swift; sourceTree = "<group>"; };
+		5678AC4A26C84CEE00D7FA6E /* AddGarmentNameOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGarmentNameOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				5678AC3D26C73DDF00D7FA6E /* FetchAndDescribeDataOperation.swift */,
+				5678AC4A26C84CEE00D7FA6E /* AddGarmentNameOperation.swift */,
 			);
 			path = CRUDOperations;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5678AC4B26C84CEE00D7FA6E /* AddGarmentNameOperation.swift in Sources */,
 				5667AC8E26C637F3004EE5B8 /* GarmentNode.swift in Sources */,
 				5667AC8C26C635A2004EE5B8 /* ExtGarmentList+UITableViewDataSource.swift in Sources */,
 				5667AC4A26C60605004EE5B8 /* AppDelegate.swift in Sources */,
