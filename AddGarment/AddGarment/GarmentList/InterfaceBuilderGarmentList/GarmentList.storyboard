@@ -36,8 +36,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="gBF-eE-IgN">
-                                <rect key="frame" x="0.0" y="15" width="414" height="793"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="gBF-eE-IgN">
+                                <rect key="frame" x="0.0" y="15" width="414" height="757"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="37J-jz-iHo">
                                         <rect key="frame" x="20" y="0.0" width="374" height="32"/>
@@ -52,7 +52,7 @@
                                         <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </segmentedControl>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="r6N-2v-RlY">
-                                        <rect key="frame" x="0.0" y="44" width="414" height="749"/>
+                                        <rect key="frame" x="0.0" y="44" width="414" height="713"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -97,8 +97,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gBF-eE-IgN" firstAttribute="leading" secondItem="BxT-En-lFp" secondAttribute="leading" id="2rK-bP-Iyu"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="gBF-eE-IgN" secondAttribute="bottom" constant="-34" id="Rc2-pJ-zAh"/>
-                            <constraint firstItem="r6N-2v-RlY" firstAttribute="bottom" secondItem="BxT-En-lFp" secondAttribute="bottom" constant="34" id="aNp-zQ-WnY"/>
+                            <constraint firstItem="gBF-eE-IgN" firstAttribute="bottom" secondItem="BxT-En-lFp" secondAttribute="bottom" constant="-2" id="Eva-VU-7Ib"/>
                             <constraint firstItem="gBF-eE-IgN" firstAttribute="centerX" secondItem="bCV-nD-reV" secondAttribute="centerX" id="sVu-O7-DWp"/>
                             <constraint firstItem="gBF-eE-IgN" firstAttribute="top" secondItem="BxT-En-lFp" secondAttribute="top" constant="15" id="xZM-TA-2CM"/>
                         </constraints>

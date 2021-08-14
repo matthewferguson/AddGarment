@@ -27,7 +27,7 @@ class GarmentList : UIViewController, UITableViewDelegate {
     //MARK:- View Controller Lifecycle
     
     override func viewDidLoad() {
-        
+        self.garments.removeAll()
         self.garmentTableView?.delegate = self
         
         contentionProtectionQueue.maxConcurrentOperationCount = 1
@@ -104,7 +104,7 @@ class GarmentList : UIViewController, UITableViewDelegate {
                         print("collectionGarments count = \(collectionGarments.count)")
                         
                         if collectionGarments.count > 0 {
-                            garments.removeAll()
+                            //garments.removeAll()
                         }
             
                         for (index, singleGarment) in collectionGarments.enumerated() {
@@ -116,13 +116,19 @@ class GarmentList : UIViewController, UITableViewDelegate {
                             
                             let sg = GarmentNode(garmentName: singleGarment.name )
                             self.garments.append(sg)
+                            
+                            self.garmentTableView!.beginUpdates()
+                            self.garmentTableView!.insertRows(at: [IndexPath(row: garments.count-1, section: 0)], with: .automatic)
+                            self.garmentTableView!.endUpdates()
+                            
+                            
                         }
                     } catch let error as NSError {
                         print("Failed to execute. \(error), \(error.userInfo)")
                     }
                 }
-                let count = self.reduceReloadQueue.operationCount
-                
+                //BUZ let count = self.reduceReloadQueue.operationCount
+                /*
                 if (self.reduceReloadQueue.operationCount <= 0) {
                     let reloadTableView = BlockOperation {
                         DispatchQueue.main.async {
@@ -131,7 +137,9 @@ class GarmentList : UIViewController, UITableViewDelegate {
                     }
                     self.reduceReloadQueue.addOperation(reloadTableView)
                 }
-                print("try")
+                 */
+                
+                //print("try")
             } else {
                 
                 
@@ -149,7 +157,7 @@ class GarmentList : UIViewController, UITableViewDelegate {
                         print("collectionGarments count = \(collectionGarments.count)")
                         
                         if collectionGarments.count > 0 {
-                            garments.removeAll()
+                            //garments.removeAll()
                         }
             
                         for (index, singleGarment) in collectionGarments.enumerated() {
@@ -162,20 +170,25 @@ class GarmentList : UIViewController, UITableViewDelegate {
                             let sg = GarmentNode(garmentName: singleGarment.name)
                             self.garments.append(sg)
                             
+                            
+                            self.garmentTableView!.beginUpdates()
+                            self.garmentTableView!.insertRows(at: [IndexPath(row: garments.count-1, section: 0)], with: .automatic)
+                            self.garmentTableView!.endUpdates()
+  
                         }
                     } catch let error as NSError {
                         print("Failed to execute. \(error), \(error.userInfo)")
                     }
                 }
-                
-                if self.reduceReloadQueue.operationCount == 0 {
+                //BUZ
+/*                if self.reduceReloadQueue.operationCount == 0 {
                     let reloadTableView = BlockOperation {
                         DispatchQueue.main.async {
                             self.garmentTableView?.reloadData()
                         }
                     }
                     self.reduceReloadQueue.addOperation(reloadTableView)
-                }
+                }*/
             }
             
         }
@@ -184,8 +197,15 @@ class GarmentList : UIViewController, UITableViewDelegate {
     
 
     func addToGarments(with garmentNode:GarmentNode, sortCmd sortByAlpha:Bool) {
+        
+        
+        
         self.garments.append(garmentNode)
-        self.reSortDataSource()
+        self.garmentTableView!.beginUpdates()
+        self.garmentTableView!.insertRows(at: [IndexPath(row: garments.count-1, section: 0)], with: .automatic)
+        self.garmentTableView!.endUpdates()
+        
+        //self.reSortDataSource()
     }
     
     
@@ -194,7 +214,7 @@ class GarmentList : UIViewController, UITableViewDelegate {
     private func setupFetchControllers() {
         do
         {
-            self.garments.removeAll()
+            
             try self.fetchAllGarmentsRequestController.performFetch()
             let garmentsCollection = self.fetchAllGarmentsRequestController.fetchedObjects!
         
@@ -204,6 +224,7 @@ class GarmentList : UIViewController, UITableViewDelegate {
             }
         
             if garments.count > 0 {
+                
                 self.reSortDataSource()
                 //garmentTableView.reloadData()
                 //garmentTableView.beginUpdates()

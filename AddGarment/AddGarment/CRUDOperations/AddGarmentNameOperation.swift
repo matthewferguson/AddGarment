@@ -42,5 +42,6 @@ final class AddGarmentNameOperation: Operation {
                 }
             }
             managedContext.reset()
+        usleep(500)
     }
 }
