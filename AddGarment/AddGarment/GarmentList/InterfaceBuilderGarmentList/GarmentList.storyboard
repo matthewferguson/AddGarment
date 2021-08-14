@@ -2,9 +2,9 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iSx-cB-D1G">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -45,6 +45,7 @@
                                             <segment title="Alpha"/>
                                             <segment title="Creation Time"/>
                                         </segments>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </segmentedControl>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="r6N-2v-RlY">
@@ -83,7 +84,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BxT-En-lFp"/>
-                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gBF-eE-IgN" firstAttribute="leading" secondItem="BxT-En-lFp" secondAttribute="leading" id="2rK-bP-Iyu"/>
                             <constraint firstAttribute="bottomMargin" secondItem="gBF-eE-IgN" secondAttribute="bottom" constant="-34" id="Rc2-pJ-zAh"/>
@@ -92,12 +93,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="List" largeTitleDisplayMode="never" id="yhS-Od-na3">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="k1E-g8-fte">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus.circle" catalog="system" style="done" id="k1E-g8-fte">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addBarButton" destination="k1E-g8-fte" id="Iia-LK-xeN"/>
                         <outlet property="garmentTableView" destination="r6N-2v-RlY" id="LLN-Bv-dzM"/>
+                        <outlet property="sortFilterSegmentControl" destination="37J-jz-iHo" id="RiA-H7-oRv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10v-3a-C77" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -106,8 +109,6 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <image name="plus.circle" catalog="system" width="128" height="121"/>
     </resources>
 </document>

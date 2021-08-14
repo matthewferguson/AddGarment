@@ -12,7 +12,10 @@ import DataFlowFunnelCD
 
 class GarmentList : UIViewController {
     
-    @IBOutlet var garmentTableView: UITableView!
+    @IBOutlet var garmentTableView: UITableView?
+    
+    @IBOutlet weak var sortFilterSegmentControl: UISegmentedControl!
+    @IBOutlet var addBarButton: UIBarButtonItem?
     
     var garments: [GarmentNode] = []
     
@@ -25,15 +28,48 @@ class GarmentList : UIViewController {
     override func viewDidLoad() {
         contentionProtectionQueue.maxConcurrentOperationCount = 1
         setupFetchControllers()
+        setupSubViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setupSubViews()
+        
     }
     
     //MARK:- View Customization
     
     private func setupSubViews() {
+        
+        sortFilterSegmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Noteworthy-Bold", size: 13.0)!], for: .normal)
+ 
+        sortFilterSegmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Noteworthy-Bold", size: 13.0)!], for:.selected)
+
+        sortFilterSegmentControl.selectedSegmentIndex = 0
+        
+        self.sortFilterSegmentControl.addTarget(self, action: #selector(sortCommandChange(sender:)), for: .valueChanged)
+        
+        
+        
+        // initial setup
+        self.isSortedByAlpha = true
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            .foregroundColor: UIColor.black,
+            .font: UIFont(name: "Noteworthy-Bold", size: 18)!
+        ]
+        
+        
+        /*
+        if garments.count <= 0 {
+            self.garmentTableView?.isHidden = false
+        }
+        else {
+            self.garmentTableView?.isHidden = false
+        } */
+        
+        
+        
+        
+        
         /*
         self.btnLookup?.layer.cornerRadius = 6
         self.btnLookup?.layer.borderWidth = 1
@@ -48,6 +84,24 @@ class GarmentList : UIViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor.getCustomPurpleColor()
         view.backgroundColor = UIColor.getCustomLightGreyColor()
         */
+        
+    }
+
+    //MARK:- Segment Control Support
+    
+    @IBAction func sortCommandChange(sender:UISegmentedControl) {
+        
+        let selectedIndex = sender.selectedSegmentIndex
+        if selectedIndex == 0 {
+            self.isSortedByAlpha = true
+            print("self.isSortedByAlpha = true")
+            self.reSortDataSource()
+        } else {
+            self.isSortedByAlpha = false
+            print("self.isSortedByAlpha = false")
+            self.reSortDataSource()
+        }
+        
     }
 
     //MARK:- Data Source Support
@@ -60,7 +114,7 @@ class GarmentList : UIViewController {
             if self.isSortedByAlpha {
                 
                 let managedContextCharacter =  DataFlowFunnel.shared.getPersistentContainerRef().viewContext
-                let fetchRequest = NSFetchRequest<Garment>(entityName: "Garment")
+                let fetchRequest = NSFetchRequest<Garments>(entityName: "Garments")
                 
                 let sortDescriptor = NSSortDescriptor(key: "name", ascending:true)
                 fetchRequest.sortDescriptors = [sortDescriptor]
@@ -90,17 +144,19 @@ class GarmentList : UIViewController {
                         print("Failed to execute. \(error), \(error.userInfo)")
                     }
                 }
-
-                let reload = BlockOperation {
-                    self.garmentTableView.reloadData()
+                
+                if self.contentionProtectionQueue.operationCount == 0 {
+                    let reload = BlockOperation {
+                        self.garmentTableView?.reloadData()
+                    }
+                    self.contentionProtectionQueue.addOperation(reload)
                 }
-                self.contentionProtectionQueue.addOperation(reload)
                 
             } else {
                 
                 
                 let managedContextCharacter =  DataFlowFunnel.shared.getPersistentContainerRef().viewContext
-                let fetchRequest = NSFetchRequest<Garment>(entityName: "Garment")
+                let fetchRequest = NSFetchRequest<Garments>(entityName: "Garments")
                 
                 let sortDescriptor = NSSortDescriptor(key: "timeStamp", ascending:true)
                 fetchRequest.sortDescriptors = [sortDescriptor]
@@ -132,10 +188,12 @@ class GarmentList : UIViewController {
                     }
                 }
                 
-                let reload = BlockOperation {
-                    self.garmentTableView.reloadData()
+                if self.contentionProtectionQueue.operationCount == 0 {
+                    let reload = BlockOperation {
+                        self.garmentTableView?.reloadData()
+                    }
+                    self.contentionProtectionQueue.addOperation(reload)
                 }
-                self.contentionProtectionQueue.addOperation(reload)
             }
             
         }
@@ -178,9 +236,9 @@ class GarmentList : UIViewController {
     }
     
     
-    fileprivate lazy var fetchAllGarmentsRequestController: NSFetchedResultsController<Garment> = {
+    fileprivate lazy var fetchAllGarmentsRequestController: NSFetchedResultsController<Garments> = {
          
-        let fetchRequestForGarments: NSFetchRequest<Garment> = Garment.fetchRequest()
+        let fetchRequestForGarments: NSFetchRequest<Garments> = Garments.fetchRequest()
          
         let sortDescriptor = NSSortDescriptor(key: "name", ascending:true)
         fetchRequestForGarments.sortDescriptors = [sortDescriptor]
@@ -197,7 +255,32 @@ class GarmentList : UIViewController {
     }()
     
     
+    //MARK:- Navigation Support
+    
+    func openGarmentAdd(){
+        self.performSegue(withIdentifier: "GarmentList_GarmentAdd_Segue", sender: self)
+    }
     
     
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "SearchCity_SearchCityResult_Segue"{
+            let viewController:SearchCityResult = segue.destination as! SearchCityResult
+            viewController.forecastCollection  = self.forecastCollection
+            let backItem = UIBarButtonItem()
+            backItem.title = searchString
+            navigationItem.backBarButtonItem = backItem
+        }
+        
+    }
+    
+    
+    
+    
+    
+    
+
 }
 

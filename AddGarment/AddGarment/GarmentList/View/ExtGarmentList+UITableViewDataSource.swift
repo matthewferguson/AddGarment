@@ -17,7 +17,7 @@ extension GarmentList: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    var cell = self.garmentTableView.dequeueReusableCell(withIdentifier: "CustomGarmentListCell_SBID") as? GarmentListCustomCell
+    var cell = self.garmentTableView?.dequeueReusableCell(withIdentifier: "CustomGarmentListCell_SBID") as? GarmentListCustomCell
       
     if cell == nil {
         cell = UITableViewCell(style:.default, reuseIdentifier:"CustomGarmentListCell_SBID") as? GarmentListCustomCell

@@ -16,10 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var refDataFlowFunnel:DataFlowFunnel = DataFlowFunnel.shared
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
         self.refDataFlowFunnel.setModelName(to: "AddGarmentModel" )
         self.refDataFlowFunnel.setTargetBundleIdentifier(bundleId: "com.matthewferguson.AddGarment")
         //DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
         //self.removeDataOnTerminate()
+        
         return true
     }
 
@@ -31,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
+    
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.

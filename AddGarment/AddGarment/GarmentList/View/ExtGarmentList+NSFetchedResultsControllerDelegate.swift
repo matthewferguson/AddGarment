@@ -13,13 +13,13 @@ extension GarmentList: NSFetchedResultsControllerDelegate {
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         //print("CharacterList: controllerWillChangeContent")
-        self.garmentTableView.beginUpdates()
+        self.garmentTableView?.beginUpdates()
     }
     
     public func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         //this area can be used to update UI
        //print("CharacterList: controllerDidChangeContent")
-        self.garmentTableView.endUpdates()
+        self.garmentTableView?.endUpdates()
     }
     
     
@@ -28,10 +28,9 @@ extension GarmentList: NSFetchedResultsControllerDelegate {
         switch (type) {
             case .insert:
                 switch anObject {
-                    case let garmentInsert as Garment:
+                    case let garmentInsert as Garments:
                         
                         let garmentNode = GarmentNode(garmentName: garmentInsert.name)
-                        
                         DispatchQueue.main.async {
                             self.addToGarments(with: garmentNode, sortCmd: self.isSortedByAlpha)
                         }
