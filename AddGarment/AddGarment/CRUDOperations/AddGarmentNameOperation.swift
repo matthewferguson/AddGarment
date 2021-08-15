@@ -22,9 +22,7 @@ final class AddGarmentNameOperation: Operation {
     override func main() {
         
         guard !isCancelled else { return }
-
-            print("AddGarmentNameOperation adding a Garments Entry == \(stagedNameToAdd)")
-            //let managedContext = DataFlowFunnel.shared.getBackgroundManagedObjectContextRef()
+        
             let managedContext = DataFlowFunnel.shared.getPersistentContainerRef().viewContext
             let newGarment:Garments = Garments(context: managedContext)
         
@@ -35,13 +33,11 @@ final class AddGarmentNameOperation: Operation {
             managedContext.performAndWait
             {
                 do{
-                    print("AddGarmentNameOperation save()");
                     try managedContext.save()
                 } catch let error as NSError {
                     print("Error on saving the Garments MO in AddGarmentNameOperation: == \(error),\(error.userInfo)")
                 }
             }
-            //managedContext.reset()
-        //usleep(500)
+            managedContext.reset()
     }
 }

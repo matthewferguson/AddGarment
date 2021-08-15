@@ -49,6 +49,7 @@ class GarmentList : UIViewController, UITableViewDelegate {
         setupSubViews()
     }
     
+    
     //MARK:- View Customization
     
     private func setupSubViews() {
@@ -71,6 +72,7 @@ class GarmentList : UIViewController, UITableViewDelegate {
         
     }
 
+    
     //MARK:- Segment Control Support
     
     @IBAction func sortCommandChange(sender:UISegmentedControl) {
@@ -122,9 +124,9 @@ class GarmentList : UIViewController, UITableViewDelegate {
                 print("Failed to execute. \(error), \(error.userInfo)")
             }
         }
-        
     }
 
+    
     
     func addToGarments(with garmentNode:GarmentNode) {
         
@@ -144,6 +146,7 @@ class GarmentList : UIViewController, UITableViewDelegate {
         
     }
 
+    
     //MARK:- Core Data Fetch Controller/Event Support
     
     private func setupFetchControllers() {
@@ -159,6 +162,7 @@ class GarmentList : UIViewController, UITableViewDelegate {
             print("GarmentNode unable to Perform Fetch Request: \(fetchError), \(fetchError.localizedDescription)")
         }
     }
+    
     
     //MARK:- Navigation Support
     

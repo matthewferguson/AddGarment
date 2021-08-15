@@ -26,11 +26,11 @@
 		5678AC4926C7807000D7FA6E /* GarmentAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678AC4826C7807000D7FA6E /* GarmentAdd.swift */; };
 		5678AC4B26C84CEE00D7FA6E /* AddGarmentNameOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678AC4A26C84CEE00D7FA6E /* AddGarmentNameOperation.swift */; };
 		5678AC4D26C86DCA00D7FA6E /* XCTextLoadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678AC4C26C86DCA00D7FA6E /* XCTextLoadOperation.swift */; };
-		5678AC4F26C8740E00D7FA6E /* RemoveAllGarmentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678AC4E26C8740E00D7FA6E /* RemoveAllGarmentOperation.swift */; };
 		5678AC5126C876F000D7FA6E /* RemoveAllErrorLogOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678AC5026C876F000D7FA6E /* RemoveAllErrorLogOperation.swift */; };
 		5678AC5326C8DB3600D7FA6E /* XCTestAddGarmentNameOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678AC5226C8DB3600D7FA6E /* XCTestAddGarmentNameOperation.swift */; };
 		5678AC5626C904F300D7FA6E /* GarmentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678AC5526C904F300D7FA6E /* GarmentNode.swift */; };
 		5678AC5826C9069800D7FA6E /* ExtGarmentAdd+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678AC5726C9069800D7FA6E /* ExtGarmentAdd+UITextFieldDelegate.swift */; };
+		5678AC5A26C90A4F00D7FA6E /* XCTestRemoveAllGarmentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678AC5926C90A4F00D7FA6E /* XCTestRemoveAllGarmentOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,11 +75,11 @@
 		5678AC4826C7807000D7FA6E /* GarmentAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarmentAdd.swift; sourceTree = "<group>"; };
 		5678AC4A26C84CEE00D7FA6E /* AddGarmentNameOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGarmentNameOperation.swift; sourceTree = "<group>"; };
 		5678AC4C26C86DCA00D7FA6E /* XCTextLoadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTextLoadOperation.swift; sourceTree = "<group>"; };
-		5678AC4E26C8740E00D7FA6E /* RemoveAllGarmentOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveAllGarmentOperation.swift; sourceTree = "<group>"; };
 		5678AC5026C876F000D7FA6E /* RemoveAllErrorLogOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveAllErrorLogOperation.swift; sourceTree = "<group>"; };
 		5678AC5226C8DB3600D7FA6E /* XCTestAddGarmentNameOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTestAddGarmentNameOperation.swift; sourceTree = "<group>"; };
 		5678AC5526C904F300D7FA6E /* GarmentNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GarmentNode.swift; sourceTree = "<group>"; };
 		5678AC5726C9069800D7FA6E /* ExtGarmentAdd+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExtGarmentAdd+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
+		5678AC5926C90A4F00D7FA6E /* XCTestRemoveAllGarmentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTestRemoveAllGarmentOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,10 +205,10 @@
 			children = (
 				5678AC3D26C73DDF00D7FA6E /* FetchAndDescribeDataOperation.swift */,
 				5678AC4A26C84CEE00D7FA6E /* AddGarmentNameOperation.swift */,
-				5678AC4E26C8740E00D7FA6E /* RemoveAllGarmentOperation.swift */,
 				5678AC5026C876F000D7FA6E /* RemoveAllErrorLogOperation.swift */,
 				5678AC4C26C86DCA00D7FA6E /* XCTextLoadOperation.swift */,
 				5678AC5226C8DB3600D7FA6E /* XCTestAddGarmentNameOperation.swift */,
+				5678AC5926C90A4F00D7FA6E /* XCTestRemoveAllGarmentOperation.swift */,
 			);
 			path = CRUDOperations;
 			sourceTree = "<group>";
@@ -399,7 +399,6 @@
 				5667AC9126C63A70004EE5B8 /* AddGarmentModel.xcdatamodeld in Sources */,
 				5667AC9326C63DF6004EE5B8 /* GarmentListCustomCell.swift in Sources */,
 				5678AC3E26C73DDF00D7FA6E /* FetchAndDescribeDataOperation.swift in Sources */,
-				5678AC4F26C8740E00D7FA6E /* RemoveAllGarmentOperation.swift in Sources */,
 				5678AC4D26C86DCA00D7FA6E /* XCTextLoadOperation.swift in Sources */,
 				5667AC8126C626CE004EE5B8 /* GarmentListVM.swift in Sources */,
 				5667AC7F26C626AD004EE5B8 /* GarmentList.swift in Sources */,
@@ -408,6 +407,7 @@
 				5678AC4926C7807000D7FA6E /* GarmentAdd.swift in Sources */,
 				5678AC5126C876F000D7FA6E /* RemoveAllErrorLogOperation.swift in Sources */,
 				5678AC5626C904F300D7FA6E /* GarmentNode.swift in Sources */,
+				5678AC5A26C90A4F00D7FA6E /* XCTestRemoveAllGarmentOperation.swift in Sources */,
 				5667AC9526C644F4004EE5B8 /* ExtGarmentList+NSFetchedResultsControllerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

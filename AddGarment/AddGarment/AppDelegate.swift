@@ -12,8 +12,6 @@ import DataFlowFunnelCD
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    var testGarmentCollection:[String] = ["apple","orange","zoofruit","banana","stawberry","blueberries","mango","sogood","wannabefruit","green chili","hops"]
     
     var refDataFlowFunnel:DataFlowFunnel = DataFlowFunnel.shared
 
@@ -21,17 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.refDataFlowFunnel.setModelName(to: "AddGarmentModel" )
         self.refDataFlowFunnel.setTargetBundleIdentifier(bundleId: "com.matthewferguson.AddGarment")
-        
-        
-        //DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
-        //DataFlowFunnel.shared.addOperation(RemoveAllGarmentOperation())
-        //sleep(5)
-        //DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
-        //DataFlowFunnel.shared.addOperation(XCTextLoadOperation(initNames: testGarmentCollection))
-        //DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
-        
-        //sleep(5)
-        //self.removeDataOnTerminate()
         
         return true
     }
