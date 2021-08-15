@@ -25,11 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
         //DataFlowFunnel.shared.addOperation(RemoveAllGarmentOperation())
+        //sleep(5)
         //DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
-        DataFlowFunnel.shared.addOperation(XCTextLoadOperation(initNames: testGarmentCollection))
+        //DataFlowFunnel.shared.addOperation(XCTextLoadOperation(initNames: testGarmentCollection))
         //DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
         
-        sleep(5)
+        //sleep(5)
         //self.removeDataOnTerminate()
         
         return true

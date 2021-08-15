@@ -11,28 +11,15 @@ import DataFlowFunnelCD
 
 extension GarmentList: NSFetchedResultsControllerDelegate {
     
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        //print("CharacterList: controllerWillChangeContent")
-        self.garmentTableView?.beginUpdates()
-    }
-    
-    public func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        //this area can be used to update UI
-       //print("CharacterList: controllerDidChangeContent")
-        self.garmentTableView?.endUpdates()
-    }
-    
-    
     public func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?)
     {
         switch (type) {
             case .insert:
                 switch anObject {
                     case let garmentInsert as Garments:
-                        
-                        let garmentNode = GarmentNode(garmentName: garmentInsert.name )
+                        let garmentNode = GarmentNode(garmentName: garmentInsert.name! )
                         DispatchQueue.main.async {
-                            self.addToGarments(with: garmentNode, sortCmd: self.isSortedByAlpha)
+                            self.addToGarments(with: garmentNode)
                         }
                     break
                     default:

@@ -10,11 +10,9 @@ import CoreData
 import DataFlowFunnelCD
 
 
-
-
 final class AddGarmentNameOperation: Operation {
     
-    var stagedNameToAdd:String?
+    var stagedNameToAdd:String
     
     init( initName: String) {
         self.stagedNameToAdd = initName
@@ -25,6 +23,8 @@ final class AddGarmentNameOperation: Operation {
         
         guard !isCancelled else { return }
 
+            print("AddGarmentNameOperation adding a Garments Entry == \(stagedNameToAdd)")
+            //let managedContext = DataFlowFunnel.shared.getBackgroundManagedObjectContextRef()
             let managedContext = DataFlowFunnel.shared.getPersistentContainerRef().viewContext
             let newGarment:Garments = Garments(context: managedContext)
         
@@ -41,7 +41,7 @@ final class AddGarmentNameOperation: Operation {
                     print("Error on saving the Garments MO in AddGarmentNameOperation: == \(error),\(error.userInfo)")
                 }
             }
-            managedContext.reset()
-        usleep(500)
+            //managedContext.reset()
+        //usleep(500)
     }
 }

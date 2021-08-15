@@ -50,7 +50,7 @@ class GarmentAdd : UIViewController {
         print("saveGarmentName = '\(stagedGarmentName)' ")
         saveBarButton.isEnabled = false
         DataFlowFunnel.shared.addOperation(AddGarmentNameOperation(initName: stagedGarmentName))
-        DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
+        DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation()) // BUZ debug
         dismiss(animated: true, completion: nil)
     }
     

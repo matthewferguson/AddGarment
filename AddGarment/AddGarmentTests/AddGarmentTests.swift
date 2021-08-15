@@ -7,6 +7,8 @@
 
 import XCTest
 @testable import AddGarment
+import CoreData
+@testable import DataFlowFunnelCD
 
 class AddGarmentTests: XCTestCase {
 
@@ -17,12 +19,18 @@ class AddGarmentTests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testDataClean() throws {
+        DataFlowFunnel.shared.addOperation(RemoveAllGarmentOperation())
+        sleep(3)
     }
-
+    
+    func testBulkDataAdd() throws {
+        let testGarmentCollection:[String] = ["apple","orange","zoofruit","banana","stawberry","blueberries","mango","sogood","wannabefruit","green chili","hops"]
+        DataFlowFunnel.shared.addOperation(XCTextLoadOperation(initNames: testGarmentCollection))
+        sleep(3)
+    }
+    
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {

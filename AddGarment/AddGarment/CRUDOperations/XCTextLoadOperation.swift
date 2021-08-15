@@ -29,7 +29,7 @@ final class XCTextLoadOperation: Operation {
             //_ = index
             print(singleGarmentName)
             //print(index)
-            DataFlowFunnel.shared.addOperation(AddGarmentNameOperation(initName: singleGarmentName))
+            DataFlowFunnel.shared.addOperation(XCTestAddGarmentNameOperation(initName: singleGarmentName))
         
         }
         

@@ -28,7 +28,8 @@ final class RemoveAllGarmentOperation: Operation {
         
         guard !isCancelled else { return }
         
-        let moc = DataFlowFunnel.shared.getPersistentContainerRef().viewContext
+        let moc = DataFlowFunnel.shared.getBackgroundManagedObjectContextRef()
+        //let moc = DataFlowFunnel.shared.getPersistentContainerRef().viewContext
         let fetchRequestUser : NSFetchRequest<Garments> = Garments.fetchRequest()
         moc.performAndWait {
             do{
@@ -42,6 +43,7 @@ final class RemoveAllGarmentOperation: Operation {
                 print("Could not execute AppDelegate::fetchRequestUser. \(error), \(error.userInfo)")
             }
         }
+        moc.reset()
         
     }
 }
