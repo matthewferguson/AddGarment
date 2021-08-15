@@ -78,15 +78,11 @@ class GarmentList : UIViewController, UITableViewDelegate {
         let selectedIndex = sender.selectedSegmentIndex
         if selectedIndex == 0 {
             self.isSortedByAlpha = true
-            //self.garmentTableView!.beginUpdates()
             self.resortDataSource()
-            //self.garmentTableView!.endUpdates()
             self.garmentTableView!.reloadData()
         } else {
             self.isSortedByAlpha = false
-            //self.garmentTableView!.beginUpdates()
             self.resortDataSource()
-            //self.garmentTableView!.endUpdates()
             self.garmentTableView!.reloadData()
         }
         

@@ -42,76 +42,15 @@ class GarmentAdd : UIViewController {
             saveBarButton.isEnabled = true
         }
         
-        
     }
     
     @IBAction func saveGarmentName() {
         
-        print("saveGarmentName = '\(stagedGarmentName)' ")
         saveBarButton.isEnabled = false
         DataFlowFunnel.shared.addOperation(AddGarmentNameOperation(initName: stagedGarmentName))
         DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation()) // BUZ debug
         dismiss(animated: true, completion: nil)
+    
     }
     
 }
-
-
-
-extension GarmentAdd: UITextFieldDelegate {
-    
-    
-    //MARK:- TextField Delegate
-    
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        //print("textFieldDidChangeSelection=\(textField.text!)")
-        stagedGarmentName = textField.text!
-        if stagedGarmentName.isEmpty {
-            saveBarButton.isEnabled = false
-        } else {
-            saveBarButton.isEnabled = true
-        }
-    }
-    
-  /*
-    func textField(_ textField: UITextField,
-                   shouldChangeCharactersIn range: NSRange,
-                   replacementString string: String) -> Bool
-    {
-        print(range)
-        print(string)
-        print(textField.text!)
-        return true;
-    }
-
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool
-    {
-        print("textFieldShouldBeginEditing")
-        print("textField name = \(String(describing: textField.text))")
-        return true
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField)
-    {
-        print("textFieldDidBeginEditing")
-        print("textField name = \(String(describing: textField.text))")
-    }
-
-    
-    func textFieldDidEndEditing(_ textField: UITextField)
-    {
-        print("textFieldDidEndEditing")
-        print("textField name = \(String(describing: textField.text))")
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool
-    {
-        print("textFieldShouldReturn")
-        print("textField name = \(String(describing: textField.text))")
-        textField.resignFirstResponder()
-        return true
-    }
- */
-    
-}
-
