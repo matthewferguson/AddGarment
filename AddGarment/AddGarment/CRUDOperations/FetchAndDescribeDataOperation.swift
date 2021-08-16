@@ -48,14 +48,17 @@ final class FetchAndDescribeDataOperation: Operation {
                     print("     singleLog.type == \(String(describing: singleLog.type))" )
                 }
                 print("----------------------")
-            }catch let error as NSError {
-                print("Failed to execute AppDelegate::removeUserData. \(error), \(error.userInfo)")
+            } catch {
+                let fetchError = error as NSError
+                let msg = "FetchAndDescribeDataOperation Unable to perform NSFetchRequest<ErrorLogs>(entityName: 'ErrorLogs'): \(fetchError), \(fetchError.localizedDescription)"
+                DataFlowFunnel.shared.addOperation(LogErrorOperation(initErrorDesc: msg, type: 1, whenItOccured: Date()))
             }
         }
         
         let fetchRequestGarments = NSFetchRequest<Garments>(entityName: "Garments")
         managedContext.performAndWait {
             do{
+                
                 print("Framework description call on Garments entity")
                 let garments = try managedContext.fetch(fetchRequestGarments)
                 for (index, garmentRecord) in garments.enumerated()
@@ -66,9 +69,15 @@ final class FetchAndDescribeDataOperation: Operation {
                     print("         garmentRecord.timeStamp  in Garments = \(String(describing: garmentRecord.timeStamp ))")
                     print("     ----------------------")
                 }
-            }catch let error as NSError {
-                print("Failed to execute AppDelegate::removeUserData. \(error), \(error.userInfo)")
+                
+            }catch {
+                
+                let fetchError = error as NSError
+                let msg = "FetchAndDescribeDataOperation Unable to perform NSFetchRequest<Garments>: \(fetchError), \(fetchError.localizedDescription)"
+                DataFlowFunnel.shared.addOperation(LogErrorOperation(initErrorDesc: msg, type: 2, whenItOccured: Date()))
+                
             }
+            
         }
         
     }

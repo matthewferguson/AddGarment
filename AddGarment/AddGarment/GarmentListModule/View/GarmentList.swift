@@ -111,6 +111,7 @@ class GarmentList : UIViewController, UITableViewDelegate {
         
         managedContextCharacter.performAndWait {
             do{
+                
                 let collectionGarments = try managedContextCharacter.fetch(fetchRequest)
                 if collectionGarments.count > 0 {
                     garments.removeAll()
@@ -120,8 +121,10 @@ class GarmentList : UIViewController, UITableViewDelegate {
                     let singleGarment = GarmentNode(garmentName: singleGarment.name! )
                     self.garments.append(singleGarment)
                 }
-            } catch let error as NSError {
-                print("Failed to execute. \(error), \(error.userInfo)")
+            } catch {
+                let fetchError = error as NSError
+                let msg = "GarmentList Unable to perform fetch resortDataSource(): \(fetchError), \(fetchError.localizedDescription)"
+                DataFlowFunnel.shared.addOperation(LogErrorOperation(initErrorDesc: msg, type: 2, whenItOccured: Date()))
             }
         }
     }
@@ -159,7 +162,8 @@ class GarmentList : UIViewController, UITableViewDelegate {
             }
         } catch {
             let fetchError = error as NSError
-            print("GarmentNode unable to Perform Fetch Request: \(fetchError), \(fetchError.localizedDescription)")
+            let msg = "GarmentList Unable to perform fetchAllGarmentsRequestController.performFetch: \(fetchError), \(fetchError.localizedDescription)"
+            DataFlowFunnel.shared.addOperation(LogErrorOperation(initErrorDesc: msg, type: 1, whenItOccured: Date()))
         }
     }
     

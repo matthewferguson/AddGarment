@@ -20,8 +20,13 @@ class AddGarmentTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func testDataClean() throws {
-        DataFlowFunnel.shared.addOperation(RemoveAllGarmentOperation())
+    func testDataCleanErrorLogs() throws {
+        DataFlowFunnel.shared.addOperation(XCTestRemoveAllErrorLogOperation())
+        sleep(3)
+    }
+
+    func testDataCleanGarments() throws {
+        DataFlowFunnel.shared.addOperation(XCTestRemoveAllGarmentOperation())
         sleep(3)
     }
     

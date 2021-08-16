@@ -34,8 +34,12 @@ final class AddGarmentNameOperation: Operation {
             {
                 do{
                     try managedContext.save()
-                } catch let error as NSError {
-                    print("Error on saving the Garments MO in AddGarmentNameOperation: == \(error),\(error.userInfo)")
+                } catch {
+                    
+                    let fetchError = error as NSError
+                    let msg = "Error on saving the Garments MO in AddGarmentNameOperation: \(fetchError), \(fetchError.localizedDescription)"
+                    DataFlowFunnel.shared.addOperation(LogErrorOperation(initErrorDesc: msg, type: 2, whenItOccured: Date()))
+                    
                 }
             }
             managedContext.reset()

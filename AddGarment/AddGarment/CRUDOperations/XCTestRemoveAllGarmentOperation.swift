@@ -29,8 +29,12 @@ final class XCTestRemoveAllGarmentOperation: Operation {
                     moc.delete(singleGarment)
                     try moc.save()
                 }
-            } catch let error as NSError {
-                print("Could not execute AppDelegate::fetchRequestUser. \(error), \(error.userInfo)")
+            } catch {
+                
+                let fetchError = error as NSError
+                let msg = "XCTestRemoveAllGarmentOperation Error on delete/save of the Garments MO after NSFetchRequest<Garments>: \(fetchError), \(fetchError.localizedDescription)"
+                DataFlowFunnel.shared.addOperation(LogErrorOperation(initErrorDesc: msg, type: 1, whenItOccured: Date()))
+                
             }
         }
         moc.reset()

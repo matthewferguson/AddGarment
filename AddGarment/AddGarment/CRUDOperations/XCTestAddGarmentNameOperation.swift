@@ -25,8 +25,7 @@ final class XCTestAddGarmentNameOperation: Operation
     override func main() {
         
         guard !isCancelled else { return }
-        
-        print("XCTestAddGarmentNameOperation adding a Garments Entry == \(stagedNameToAdd)")
+    
         let managedContext = DataFlowFunnel.shared.getBackgroundManagedObjectContextRef()
         let newGarment:Garments = Garments(context: managedContext)
     
@@ -37,10 +36,13 @@ final class XCTestAddGarmentNameOperation: Operation
         managedContext.performAndWait
         {
             do{
-                print("AddGarmentNameOperation save()");
                 try managedContext.save()
-            } catch let error as NSError {
-                print("Error on saving the Garments MO in AddGarmentNameOperation: == \(error),\(error.userInfo)")
+            } catch {
+                
+                let fetchError = error as NSError
+                let msg = "Error on save of the Garments MO in XCTestAddGarmentNameOperation: \(fetchError), \(fetchError.localizedDescription)"
+                DataFlowFunnel.shared.addOperation(LogErrorOperation(initErrorDesc: msg, type: 1, whenItOccured: Date()))
+                
             }
         }
         managedContext.reset()

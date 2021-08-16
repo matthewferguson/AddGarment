@@ -13,12 +13,19 @@ import DataFlowFunnelCD
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
+    var fishingBoatBackgroundProcessing:ErrorLogDemarcation?
     var refDataFlowFunnel:DataFlowFunnel = DataFlowFunnel.shared
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         self.refDataFlowFunnel.setModelName(to: "AddGarmentModel" )
         self.refDataFlowFunnel.setTargetBundleIdentifier(bundleId: "com.matthewferguson.AddGarment")
+        
+  
+        DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
+        
+        // start the error log operations
+        self.fishingBoatBackgroundProcessing = ErrorLogDemarcation()
         
         return true
     }

@@ -1,5 +1,5 @@
 //
-//  RemoveAllErrorLogOperation.swift
+//  XCTestRemoveAllErrorLogOperation.swift
 //  AddGarment
 //
 //  Created by Matthew Ferguson on 8/14/21.
@@ -10,7 +10,7 @@ import CoreData
 import DataFlowFunnelCD
 
 
-final class RemoveAllErrorLogOperation: Operation {
+final class XCTestRemoveAllErrorLogOperation: Operation {
  
     override init(){
         super.init()
@@ -30,7 +30,11 @@ final class RemoveAllErrorLogOperation: Operation {
                     try moc.save()
                 }
             } catch let error as NSError {
-                print("Could not execute AppDelegate::fetchRequestUser. \(error), \(error.userInfo)")
+                
+                let fetchError = error as NSError
+                let msg = "Error on delete the ErrorLogs MO in RemoveAllErrorLogOperation: \(fetchError), \(fetchError.localizedDescription)"
+                DataFlowFunnel.shared.addOperation(LogErrorOperation(initErrorDesc: msg, type: 2, whenItOccured: Date()))
+
             }
         }
         
