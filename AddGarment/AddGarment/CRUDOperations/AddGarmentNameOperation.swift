@@ -9,28 +9,19 @@ import Foundation
 import CoreData
 import DataFlowFunnelCD
 
-/// A view that displays one or more lines of read-only text. [...]
-/// UITableViewDelegate conformance
+/// Add a Garment into the core data stack on Garment table
+/// Operation conformance
 final class AddGarmentNameOperation: Operation {
     
     
-    /// [This property is] the text color of the label.
+    /// stagedNameToAdd text to be loaded in Garments
     var stagedNameToAdd:String
     
-    
-    /// <#Description#>
-    ///
-    /// - Parameter value: <#value description#>
-    /// - Returns: <#return value description#>
     init( initName: String) {
         self.stagedNameToAdd = initName
         super.init()
     }
-    
-    /// <#Description#>
-    ///
-    /// - Parameter value: <#value description#>
-    /// - Returns: <#return value description#>
+
     override func main() {
         
         guard !isCancelled else { return }

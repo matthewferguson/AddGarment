@@ -8,17 +8,18 @@
 import Foundation
 import UIKit
 
-/// A view that displays one or more lines of read-only text. [...]
-/// UITableViewDelegate conformance
+/// A view that represents a cell in a list
+/// UITableViewCell conformance
 public class GarmentListCustomCell: UITableViewCell {
     
-    /// [This property is] the text color of the label.
+    /// garmentName is the Label and label text shown within the cell view.
     @IBOutlet var garmentName:UILabel!
     
-    /// <#Description#>
+    /// PrepareForReuse is a caching request to manage the memory for view.
+    /// Helps reduce the reloading of cells if not necessary.
     ///
-    /// - Parameter value: <#value description#>
-    /// - Returns: <#return value description#>
+    /// - Parameter value: none
+    /// - Returns: none
     override public func prepareForReuse() {
         super.prepareForReuse()
     }

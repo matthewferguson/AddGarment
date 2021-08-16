@@ -9,15 +9,16 @@ import Foundation
 import CoreData
 import DataFlowFunnelCD
 
-/// A view that displays one or more lines of read-only text. [...]
-/// UITableViewDelegate conformance
+/// extension of the ErrorLogDemarcation object to conform to
+/// the Fetch Results Controller Delegate
+/// NSFetchedResultsControllerDelegate conformance
 extension ErrorLogDemarcation: NSFetchedResultsControllerDelegate {
     
     
-    /// <#Description#>
+    /// Protocal/Delegate function supporting the NSFetchedResultsControllerDelegate
     ///
-    /// - Parameter value: <#value description#>
-    /// - Returns: <#return value description#>
+    /// - Parameter value: https://developer.apple.com/documentation/coredata/nsfetchedresultscontrollerdelegate/1622296-controller
+    /// - Returns: none
     public func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?)
     {
         switch (type) {

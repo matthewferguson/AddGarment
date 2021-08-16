@@ -10,23 +10,15 @@ import CoreData
 import DataFlowFunnelCD
 
 
-/// A view that displays one or more lines of read-only text. [...]
-/// UITableViewDelegate conformance
+/// Fetch all tables and print out all for debug. 
+/// Operation conformance
 final class FetchAndDescribeDataOperation: Operation {
     
-    
-    /// <#Description#>
-    ///
-    /// - Parameter value: <#value description#>
-    /// - Returns: <#return value description#>
     override init() {
         super.init()
     }
 
-    /// <#Description#>
-    ///
-    /// - Parameter value: <#value description#>
-    /// - Returns: <#return value description#>
+    
     override func main() {
         
         guard !isCancelled else { return }

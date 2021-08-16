@@ -22,28 +22,19 @@ class AddGarmentTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    /// <#Description#>
-    ///
-    /// - Parameter value: <#value description#>
-    /// - Returns: <#return value description#>
+    
     func testDataCleanErrorLogs() throws {
         DataFlowFunnel.shared.addOperation(XCTestRemoveAllErrorLogOperation())
         sleep(3)
     }
 
-    /// <#Description#>
-    ///
-    /// - Parameter value: <#value description#>
-    /// - Returns: <#return value description#>
+    
     func testDataCleanGarments() throws {
         DataFlowFunnel.shared.addOperation(XCTestRemoveAllGarmentOperation())
         sleep(3)
     }
     
-    /// <#Description#>
-    ///
-    /// - Parameter value: <#value description#>
-    /// - Returns: <#return value description#>
+    
     func testBulkDataAdd() throws {
         let testGarmentCollection:[String] = ["apple","orange","zoofruit","banana","stawberry","blueberries","mango","sogood","wannabefruit","green chili","hops"]
         DataFlowFunnel.shared.addOperation(XCTextLoadOperation(initNames: testGarmentCollection))

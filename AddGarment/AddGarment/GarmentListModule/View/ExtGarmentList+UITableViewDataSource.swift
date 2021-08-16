@@ -8,22 +8,22 @@
 import Foundation
 import UIKit
 
-/// A view that displays one or more lines of read-only text. [...]
-/// UITableViewDelegate conformance
+/// Extension for UITableViewDataSource conformance.  Extends the building of the table view.
+/// UITableViewDataSource conformance
 extension GarmentList: UITableViewDataSource {
     
-    /// <#Description#>
+    /// numberOfRowsInSection - sets the number inside the data source.
     ///
-    /// - Parameter value: <#value description#>
-    /// - Returns: <#return value description#>
+    /// - Parameter value: tableview, section
+    /// - Returns: integer count within the data source
   func tableView(_ tableView: UITableView,numberOfRowsInSection section: Int) -> Int {
     return garments.count
   }
   
-    /// <#Description#>
+    /// cellForRowAt constructs the individual Custome Garment Cells.  Receives a call back for each cell.
     ///
-    /// - Parameter value: <#value description#>
-    /// - Returns: <#return value description#>
+    /// - Parameter value: tableView, indexPath
+    /// - Returns: UITableViewCell
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
     var cell = self.garmentTableView?.dequeueReusableCell(withIdentifier: "CustomGarmentListCell_SBID") as? GarmentListCustomCell

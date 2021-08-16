@@ -7,9 +7,9 @@
 
 import Foundation
 
-/// A view that displays one or more lines of read-only text. [...]
-/// UITableViewDelegate conformance
+/// Data Structure that represents a Garment to be displayed
+/// on a list view.
 struct GarmentNode {
-    /// [This property is] the text color of the label.
+    /// represents the garment name for this single Garment.
     var garmentName:String
 }

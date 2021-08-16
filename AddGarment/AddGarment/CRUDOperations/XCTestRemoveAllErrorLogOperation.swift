@@ -9,8 +9,7 @@ import Foundation
 import CoreData
 import DataFlowFunnelCD
 
-/// A view that displays one or more lines of read-only text. [...]
-/// UITableViewDelegate conformance
+
 final class XCTestRemoveAllErrorLogOperation: Operation {
  
     /// <#Description#>

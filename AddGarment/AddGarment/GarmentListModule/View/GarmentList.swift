@@ -10,23 +10,28 @@ import UIKit
 import CoreData
 import DataFlowFunnelCD
 
-/// A view that displays one or more lines of read-only text. [...]
-/// UITableViewDelegate conformance
+/// GarmentList displays a sorted list of GarmentNodes.  Allows for
+/// user interaction to request filtered sorted lists for display.
+/// Also navigation request handled for the add a new garment.
+/// UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate conformance
 class GarmentList : UIViewController, UITableViewDelegate {
     
-    /// [This property is] the text color of the label.
+    /// garment table view
     @IBOutlet var garmentTableView: UITableView?
-    /// [This property is] the text color of the label.
+    /// segment controller for sort filter requests
     @IBOutlet weak var sortFilterSegmentControl: UISegmentedControl!
-    /// [This property is] the text color of the label.
+    /// navigation bar add garment button controller
     @IBOutlet var addBarButton: UIBarButtonItem?
     
-    /// [This property is] the text color of the label.
+    /// data source of garment list, sorted on command from sort segment control
     var garments: [GarmentNode] = []
-    /// [This property is] the text color of the label.
+    /// State boolean commanding the binary state of sort on the data structure
     var isSortedByAlpha:Bool = true
     
-    /// [This property is] the text color of the label.
+    /// Sets up the core data fetch controllers (subscribes)
+    ///
+    /// - Parameter value: none
+    /// - Returns: none, but initializes the lazy load fetchAllGarmentsRequestController and processes the initial fetch.
     fileprivate lazy var fetchAllGarmentsRequestController: NSFetchedResultsController<Garments> = {
          
         let fetchRequestForGarments: NSFetchRequest<Garments> = Garments.fetchRequest()
@@ -48,10 +53,12 @@ class GarmentList : UIViewController, UITableViewDelegate {
     
     //MARK:- View Controller Lifecycle
     
-    /// <#Description#>
+    /// viewDidLoad initalization. init the data source
+    /// for table view, table view delegate, setup the fetch controller,
+    /// setupSubViews
     ///
-    /// - Parameter value: <#value description#>
-    /// - Returns: <#return value description#>
+    /// - Parameter value: none
+    /// - Returns: none
     override func viewDidLoad() {
         
         self.garments.removeAll()
@@ -64,10 +71,11 @@ class GarmentList : UIViewController, UITableViewDelegate {
     
     //MARK:- View Customization
     
-    /// <#Description#>
+    /// setupSubViews - sort filter segment control look and feel, set the boolean sort variable,
+    /// navigation bar font style.
     ///
-    /// - Parameter value: <#value description#>
-    /// - Returns: <#return value description#>
+    /// - Parameter value: none
+    /// - Returns: none
     private func setupSubViews() {
         
         self.sortFilterSegmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Noteworthy-Bold", size: 13.0)!], for: .normal)
@@ -91,10 +99,12 @@ class GarmentList : UIViewController, UITableViewDelegate {
     
     //MARK:- Segment Control Support
     
-    /// <#Description#>
+    /// Sort command change delegate segment control callback.
+    /// pulls the selection of segment index, then set the state,
+    /// re-sort the data source, and reload.
     ///
-    /// - Parameter value: <#value description#>
-    /// - Returns: <#return value description#>
+    /// - Parameter value: a UISegmentedControl
+    /// - Returns: none, process data source and sets state logic boolean.
     @IBAction func sortCommandChange(sender:UISegmentedControl) {
         
         let selectedIndex = sender.selectedSegmentIndex
@@ -113,10 +123,11 @@ class GarmentList : UIViewController, UITableViewDelegate {
     
     //MARK:- Data Source Support
 
-    /// <#Description#>
+    /// re-sort command on core data stack.  This is the crud request with sort discriptors.
+    /// fetch the sorted data and load the data source for display on list view.
     ///
-    /// - Parameter value: <#value description#>
-    /// - Returns: <#return value description#>
+    /// - Parameter value: none
+    /// - Returns: none, alters the data source from a sorted core data request.
     private func resortDataSource() {
         
         let managedContextCharacter =  DataFlowFunnel.shared.getPersistentContainerRef().viewContext
@@ -154,10 +165,11 @@ class GarmentList : UIViewController, UITableViewDelegate {
     }
 
     
-    /// <#Description#>
+    /// Add a new Garment as support to handling an insert event (fetch controller)
     ///
-    /// - Parameter value: <#value description#>
-    /// - Returns: <#return value description#>
+    ///
+    /// - Parameter value: garmentNode:GarmentNode - node to insert
+    /// - Returns: none, alters the view and data source.
     func addToGarments(with garmentNode:GarmentNode) {
         
         DispatchQueue.main.async {
@@ -179,10 +191,11 @@ class GarmentList : UIViewController, UITableViewDelegate {
     
     //MARK:- Core Data Fetch Controller/Event Support
     
-    /// <#Description#>
+    /// setupFetchControllers sets the fetchAllGarmentsRequestController, and pulls the initial load
+    /// of listed garments.
     ///
-    /// - Parameter value: <#value description#>
-    /// - Returns: <#return value description#>
+    /// - Parameter value: none
+    /// - Returns: none, pulls all garments
     private func setupFetchControllers() {
         do {
             try self.fetchAllGarmentsRequestController.performFetch()
@@ -201,10 +214,10 @@ class GarmentList : UIViewController, UITableViewDelegate {
     
     //MARK:- Navigation Support
     
-    /// <#Description#>
+    /// openGarmentAdd navigates to the modal view GarmentAdd
     ///
-    /// - Parameter value: <#value description#>
-    /// - Returns: <#return value description#>
+    /// - Parameter value: none
+    /// - Returns: none, navigation to modal view. 
     @IBAction func openGarmentAdd(){
         
         let mainView:UIStoryboard = UIStoryboard(name: "GarmentAdd", bundle: nil)

@@ -10,29 +10,32 @@ import UIKit
 import CoreData
 import DataFlowFunnelCD
 
-/// A view that displays one or more lines of read-only text. [...]
-/// UITableViewDelegate conformance
+/// A view and view controller to allow for a new garment name to be added to the data flow.
+/// UIViewController conformance
 class GarmentAdd : UIViewController {
     
-    /// [This property is] the text color of the label.
+    /// interface builder connected input text field.
     @IBOutlet var inputGarmentName:UITextField!
+    /// central location of staged garment name, String, being added.
     var stagedGarmentName:String = String()
+    /// save button located on the navigation bar
     @IBOutlet var saveBarButton: UIBarButtonItem!
 
     
-    /// <#Description#>
+    /// As part of UIViewController, allows for view and subcomponent setup
     ///
-    /// - Parameter value: <#value description#>
-    /// - Returns: <#return value description#>
+    /// - Parameter value: na
+    /// - Returns: na
     override func viewDidLoad() {
         inputGarmentName?.delegate = self
         customizeTheSubviews()
     }
  
-    /// <#Description#>
+    /// Customize the navigation bar, save button, and run-time updated garment
+    /// name/save button enabled is set
     ///
-    /// - Parameter value: <#value description#>
-    /// - Returns: <#return value description#>
+    /// - Parameter value: none
+    /// - Returns: none
     private func customizeTheSubviews(){
     
         navigationController?.setNavigationBarHidden(false, animated: false)
@@ -57,10 +60,11 @@ class GarmentAdd : UIViewController {
     
     
     
-    /// <#Description#>
+    /// IB connection save action.  This is the receiving action function starting a save.
+    /// changes the save button state, addOperation to be loaded onto the DataFlowFunnel for data flow changes.
     ///
-    /// - Parameter value: <#value description#>
-    /// - Returns: <#return value description#>
+    /// - Parameter value: none
+    /// - Returns: none, but loads a save on the core data stack as an insert. 
     @IBAction func saveGarmentName() {
         
         saveBarButton.isEnabled = false

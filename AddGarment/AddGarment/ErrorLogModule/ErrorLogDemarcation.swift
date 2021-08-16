@@ -9,12 +9,14 @@ import Foundation
 import CoreData
 import DataFlowFunnelCD
 
-/// A view that displays one or more lines of read-only text. [...]
-/// UITableViewDelegate conformance
+/// Demarcation and receiver of ErrorLog. An Object that is used to receive and handle error messages for
+/// logging, web services analytics, and other business logic involved.
+/// NSObject conformance
 class ErrorLogDemarcation : NSObject {
     
     
-    /// [This property is] the text color of the label.
+    /// fetchAllErrorLogsRequestController represents a live event subscription for CRUD operations
+    /// on the ErrorLogs table in the core data stack. This is the filtered fetch event for that table.
     fileprivate lazy var fetchAllErrorLogsRequestController: NSFetchedResultsController<ErrorLogs> = {
          let fetchRequestForLogs: NSFetchRequest<ErrorLogs> = ErrorLogs.fetchRequest()
         
@@ -32,19 +34,19 @@ class ErrorLogDemarcation : NSObject {
          return fetchAllErrorLogRecordRequest
     }()
     
-    /// <#Description#>
+    /// Init the object and setup the core data fetch controllers.
     ///
-    /// - Parameter value: <#value description#>
-    /// - Returns: <#return value description#>
+    /// - Parameter value: none
+    /// - Returns: void, but initalizes the object
     override init(){
         super.init()
         self.setupFetchControllersDemarc()
     }
     
-    /// <#Description#>
+    /// Sets up the core data fetch controllers (subscribes)
     ///
-    /// - Parameter value: <#value description#>
-    /// - Returns: <#return value description#>
+    /// - Parameter value: none
+    /// - Returns: none, but initializes the lazy load fetchAllErrorLogsRequestController and processes the initial fetch. 
     private func setupFetchControllersDemarc() {
         
         do {
