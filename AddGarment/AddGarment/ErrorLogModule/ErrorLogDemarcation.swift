@@ -9,8 +9,12 @@ import Foundation
 import CoreData
 import DataFlowFunnelCD
 
+/// A view that displays one or more lines of read-only text. [...]
+/// UITableViewDelegate conformance
 class ErrorLogDemarcation : NSObject {
     
+    
+    /// [This property is] the text color of the label.
     fileprivate lazy var fetchAllErrorLogsRequestController: NSFetchedResultsController<ErrorLogs> = {
          let fetchRequestForLogs: NSFetchRequest<ErrorLogs> = ErrorLogs.fetchRequest()
         
@@ -28,13 +32,19 @@ class ErrorLogDemarcation : NSObject {
          return fetchAllErrorLogRecordRequest
     }()
     
-    
+    /// <#Description#>
+    ///
+    /// - Parameter value: <#value description#>
+    /// - Returns: <#return value description#>
     override init(){
         super.init()
         self.setupFetchControllersDemarc()
     }
     
-    
+    /// <#Description#>
+    ///
+    /// - Parameter value: <#value description#>
+    /// - Returns: <#return value description#>
     private func setupFetchControllersDemarc() {
         
         do {

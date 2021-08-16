@@ -17,7 +17,6 @@
 		5667AC6126C60606004EE5B8 /* AddGarmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667AC6026C60606004EE5B8 /* AddGarmentTests.swift */; };
 		5667AC6C26C60607004EE5B8 /* AddGarmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667AC6B26C60607004EE5B8 /* AddGarmentUITests.swift */; };
 		5667AC7F26C626AD004EE5B8 /* GarmentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667AC7E26C626AD004EE5B8 /* GarmentList.swift */; };
-		5667AC8126C626CE004EE5B8 /* GarmentListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667AC8026C626CE004EE5B8 /* GarmentListVM.swift */; };
 		5667AC8426C62761004EE5B8 /* GarmentList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5667AC8326C62761004EE5B8 /* GarmentList.storyboard */; };
 		5667AC8A26C630CD004EE5B8 /* DataFlowFunnelCD in Frameworks */ = {isa = PBXBuildFile; productRef = 5667AC8926C630CD004EE5B8 /* DataFlowFunnelCD */; };
 		5667AC8C26C635A2004EE5B8 /* ExtGarmentList+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667AC8B26C635A2004EE5B8 /* ExtGarmentList+UITableViewDataSource.swift */; };
@@ -70,7 +69,6 @@
 		5667AC6B26C60607004EE5B8 /* AddGarmentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGarmentUITests.swift; sourceTree = "<group>"; };
 		5667AC6D26C60607004EE5B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5667AC7E26C626AD004EE5B8 /* GarmentList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarmentList.swift; sourceTree = "<group>"; };
-		5667AC8026C626CE004EE5B8 /* GarmentListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarmentListVM.swift; sourceTree = "<group>"; };
 		5667AC8326C62761004EE5B8 /* GarmentList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GarmentList.storyboard; sourceTree = "<group>"; };
 		5667AC8B26C635A2004EE5B8 /* ExtGarmentList+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExtGarmentList+UITableViewDataSource.swift"; sourceTree = "<group>"; };
 		5667AC9026C63A70004EE5B8 /* AddGarmentModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AddGarmentModel.xcdatamodel; sourceTree = "<group>"; };
@@ -183,7 +181,6 @@
 			children = (
 				5667AC8226C6272B004EE5B8 /* InterfaceBuilderGarmentList */,
 				5678AC5426C904F300D7FA6E /* Model Support */,
-				5667AC7C26C62617004EE5B8 /* ViewModel */,
 				5667AC7B26C62597004EE5B8 /* View */,
 			);
 			path = GarmentListModule;
@@ -198,14 +195,6 @@
 				5667AC9426C644F4004EE5B8 /* ExtGarmentList+NSFetchedResultsControllerDelegate.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		5667AC7C26C62617004EE5B8 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				5667AC8026C626CE004EE5B8 /* GarmentListVM.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		5667AC8226C6272B004EE5B8 /* InterfaceBuilderGarmentList */ = {
@@ -419,7 +408,6 @@
 				5678AC3E26C73DDF00D7FA6E /* FetchAndDescribeDataOperation.swift in Sources */,
 				5678AC4D26C86DCA00D7FA6E /* XCTextLoadOperation.swift in Sources */,
 				565F4F7126C9E8D200236323 /* ErrorLogDemarcation.swift in Sources */,
-				5667AC8126C626CE004EE5B8 /* GarmentListVM.swift in Sources */,
 				5667AC7F26C626AD004EE5B8 /* GarmentList.swift in Sources */,
 				565F4F7326C9E97100236323 /* ExtErrorLog+NSFetchedResultsControllerDelegate.swift in Sources */,
 				5667AC4C26C60605004EE5B8 /* SceneDelegate.swift in Sources */,

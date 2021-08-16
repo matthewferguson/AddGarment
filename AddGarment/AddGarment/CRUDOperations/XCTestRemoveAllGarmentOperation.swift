@@ -9,13 +9,22 @@ import Foundation
 import CoreData
 import DataFlowFunnelCD
 
-
+/// A view that displays one or more lines of read-only text. [...]
+/// UITableViewDelegate conformance
 final class XCTestRemoveAllGarmentOperation: Operation {
     
+    /// <#Description#>
+    ///
+    /// - Parameter value: <#value description#>
+    /// - Returns: <#return value description#>
     override init(){
         super.init()
     }
     
+    /// <#Description#>
+    ///
+    /// - Parameter value: <#value description#>
+    /// - Returns: <#return value description#>
     override func main() {
         
         guard !isCancelled else { return }

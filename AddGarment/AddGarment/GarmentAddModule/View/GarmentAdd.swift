@@ -10,18 +10,29 @@ import UIKit
 import CoreData
 import DataFlowFunnelCD
 
+/// A view that displays one or more lines of read-only text. [...]
+/// UITableViewDelegate conformance
 class GarmentAdd : UIViewController {
     
+    /// [This property is] the text color of the label.
     @IBOutlet var inputGarmentName:UITextField!
     var stagedGarmentName:String = String()
     @IBOutlet var saveBarButton: UIBarButtonItem!
 
+    
+    /// <#Description#>
+    ///
+    /// - Parameter value: <#value description#>
+    /// - Returns: <#return value description#>
     override func viewDidLoad() {
         inputGarmentName?.delegate = self
         customizeTheSubviews()
     }
  
-    
+    /// <#Description#>
+    ///
+    /// - Parameter value: <#value description#>
+    /// - Returns: <#return value description#>
     private func customizeTheSubviews(){
     
         navigationController?.setNavigationBarHidden(false, animated: false)
@@ -44,6 +55,12 @@ class GarmentAdd : UIViewController {
         
     }
     
+    
+    
+    /// <#Description#>
+    ///
+    /// - Parameter value: <#value description#>
+    /// - Returns: <#return value description#>
     @IBAction func saveGarmentName() {
         
         saveBarButton.isEnabled = false

@@ -10,15 +10,23 @@ import UIKit
 import CoreData
 import DataFlowFunnelCD
 
+/// A view that displays one or more lines of read-only text. [...]
+/// UITableViewDelegate conformance
 class GarmentList : UIViewController, UITableViewDelegate {
     
+    /// [This property is] the text color of the label.
     @IBOutlet var garmentTableView: UITableView?
+    /// [This property is] the text color of the label.
     @IBOutlet weak var sortFilterSegmentControl: UISegmentedControl!
+    /// [This property is] the text color of the label.
     @IBOutlet var addBarButton: UIBarButtonItem?
     
+    /// [This property is] the text color of the label.
     var garments: [GarmentNode] = []
+    /// [This property is] the text color of the label.
     var isSortedByAlpha:Bool = true
     
+    /// [This property is] the text color of the label.
     fileprivate lazy var fetchAllGarmentsRequestController: NSFetchedResultsController<Garments> = {
          
         let fetchRequestForGarments: NSFetchRequest<Garments> = Garments.fetchRequest()
@@ -40,6 +48,10 @@ class GarmentList : UIViewController, UITableViewDelegate {
     
     //MARK:- View Controller Lifecycle
     
+    /// <#Description#>
+    ///
+    /// - Parameter value: <#value description#>
+    /// - Returns: <#return value description#>
     override func viewDidLoad() {
         
         self.garments.removeAll()
@@ -52,6 +64,10 @@ class GarmentList : UIViewController, UITableViewDelegate {
     
     //MARK:- View Customization
     
+    /// <#Description#>
+    ///
+    /// - Parameter value: <#value description#>
+    /// - Returns: <#return value description#>
     private func setupSubViews() {
         
         self.sortFilterSegmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Noteworthy-Bold", size: 13.0)!], for: .normal)
@@ -75,6 +91,10 @@ class GarmentList : UIViewController, UITableViewDelegate {
     
     //MARK:- Segment Control Support
     
+    /// <#Description#>
+    ///
+    /// - Parameter value: <#value description#>
+    /// - Returns: <#return value description#>
     @IBAction func sortCommandChange(sender:UISegmentedControl) {
         
         let selectedIndex = sender.selectedSegmentIndex
@@ -93,6 +113,10 @@ class GarmentList : UIViewController, UITableViewDelegate {
     
     //MARK:- Data Source Support
 
+    /// <#Description#>
+    ///
+    /// - Parameter value: <#value description#>
+    /// - Returns: <#return value description#>
     private func resortDataSource() {
         
         let managedContextCharacter =  DataFlowFunnel.shared.getPersistentContainerRef().viewContext
@@ -130,7 +154,10 @@ class GarmentList : UIViewController, UITableViewDelegate {
     }
 
     
-    
+    /// <#Description#>
+    ///
+    /// - Parameter value: <#value description#>
+    /// - Returns: <#return value description#>
     func addToGarments(with garmentNode:GarmentNode) {
         
         DispatchQueue.main.async {
@@ -152,6 +179,10 @@ class GarmentList : UIViewController, UITableViewDelegate {
     
     //MARK:- Core Data Fetch Controller/Event Support
     
+    /// <#Description#>
+    ///
+    /// - Parameter value: <#value description#>
+    /// - Returns: <#return value description#>
     private func setupFetchControllers() {
         do {
             try self.fetchAllGarmentsRequestController.performFetch()
@@ -170,6 +201,10 @@ class GarmentList : UIViewController, UITableViewDelegate {
     
     //MARK:- Navigation Support
     
+    /// <#Description#>
+    ///
+    /// - Parameter value: <#value description#>
+    /// - Returns: <#return value description#>
     @IBAction func openGarmentAdd(){
         
         let mainView:UIStoryboard = UIStoryboard(name: "GarmentAdd", bundle: nil)

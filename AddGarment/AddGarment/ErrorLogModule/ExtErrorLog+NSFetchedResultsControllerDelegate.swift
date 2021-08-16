@@ -9,8 +9,15 @@ import Foundation
 import CoreData
 import DataFlowFunnelCD
 
+/// A view that displays one or more lines of read-only text. [...]
+/// UITableViewDelegate conformance
 extension ErrorLogDemarcation: NSFetchedResultsControllerDelegate {
     
+    
+    /// <#Description#>
+    ///
+    /// - Parameter value: <#value description#>
+    /// - Returns: <#return value description#>
     public func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?)
     {
         switch (type) {

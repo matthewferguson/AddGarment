@@ -8,13 +8,22 @@
 import Foundation
 import UIKit
 
-
+/// A view that displays one or more lines of read-only text. [...]
+/// UITableViewDelegate conformance
 extension GarmentList: UITableViewDataSource {
-  
+    
+    /// <#Description#>
+    ///
+    /// - Parameter value: <#value description#>
+    /// - Returns: <#return value description#>
   func tableView(_ tableView: UITableView,numberOfRowsInSection section: Int) -> Int {
     return garments.count
   }
   
+    /// <#Description#>
+    ///
+    /// - Parameter value: <#value description#>
+    /// - Returns: <#return value description#>
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
     var cell = self.garmentTableView?.dequeueReusableCell(withIdentifier: "CustomGarmentListCell_SBID") as? GarmentListCustomCell

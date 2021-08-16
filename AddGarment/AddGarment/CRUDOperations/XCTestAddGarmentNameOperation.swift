@@ -11,17 +11,26 @@ import DataFlowFunnelCD
 
 
 
-
+/// A view that displays one or more lines of read-only text. [...]
+/// UITableViewDelegate conformance
 final class XCTestAddGarmentNameOperation: Operation
 {
-    
+    /// [This property is] the text color of the label.
     var stagedNameToAdd:String
     
+    /// <#Description#>
+    ///
+    /// - Parameter value: <#value description#>
+    /// - Returns: <#return value description#>
     init( initName: String) {
         self.stagedNameToAdd = initName
         super.init()
     }
     
+    /// <#Description#>
+    ///
+    /// - Parameter value: <#value description#>
+    /// - Returns: <#return value description#>
     override func main() {
         
         guard !isCancelled else { return }
