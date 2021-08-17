@@ -1,6 +1,6 @@
 # AddGarment
 
-Coding Assessment - Specs managed in repo
+Coding Assessment - Specs archived in repo
 
 Demo Video: https://www.dropbox.com/s/82h4p25fkavntlk/AddGarment%20%202021-08-16%20at%204.26.06%20PM.mov?dl=0
 
