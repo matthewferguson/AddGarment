@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <Group
+      location = "group:AddGarment/Specification"
+      name = "Specification">
+      <FileRef
+         location = "group:Mobile Technical Assessment.pdf">
+      </FileRef>
+      <FileRef
+         location = "group:assessment tips.pdf">
+      </FileRef>
+   </Group>
    <FileRef
       location = "group:AddGarment/AddGarment.xcodeproj">
    </FileRef>

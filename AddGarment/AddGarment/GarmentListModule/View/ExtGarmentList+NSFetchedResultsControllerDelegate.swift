@@ -9,8 +9,9 @@ import Foundation
 import CoreData
 import DataFlowFunnelCD
 
-/// extension of the GarmentList object to conform to
-/// the Fetch Results Controller Delegate
+/// extension GarmentList
+/// conform to the Fetch Results Controller Delegate
+///
 /// NSFetchedResultsControllerDelegate conformance
 extension GarmentList: NSFetchedResultsControllerDelegate {
     
