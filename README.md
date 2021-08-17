@@ -20,8 +20,8 @@ Designed on Xcode Version 12.5.1 (12E507) and supports iOS 13 and 14 SDK.
 AutoLayout supported for iPhone size class portrait and landscape. 
 
  XCTest support to load and remove all of the Garments and ErrorLog table entries.  This will load test data with the following steps. 
-1. Find AddGarmentTests folder, then open AddGarmentTests.swift. 
-2. You run the following single test runs:
+1. Find AddGarmentTests folder and open AddGarmentTests.swift. 
+2. Run the following single test functions:
 	func testDataCleanErrorLogs()
 	func testDataCleanGarments()
 	func testBulkDataAdd()
