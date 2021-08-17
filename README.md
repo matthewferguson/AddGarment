@@ -1,6 +1,8 @@
 # AddGarment
 Short Coding Assessment - Specs located in repo
 
+Demo Video: https://www.dropbox.com/s/82h4p25fkavntlk/AddGarment%20%202021-08-16%20at%204.26.06%20PM.mov?dl=0
+
 The data within AddGarment flows through the Core Data Framework allowing for a Data Driven Event Driven Architecture.  Which allows for a MVI Architecture that breaks out, decouples, the modules as either business logic or Views / View Controllers.  Allowing for Views/View Controllers/View Models the capability of close to plug and play by tapping into the data flow (Core Data).  Plus, this architecture allows for modules to be organized as Swift Packages (Swift Package Manager) now or in the future.   
 
 The Swift Package DataFlowFunnelCD ( https://github.com/matthewferguson/DataFlowFunnelCD ) provides Core Data CRUD operation contention protection of the NSManagedObject. All save operations are performed from Operations (located in the group/folder ‘CRUDOperations’) that are placed on the DataFlowFunnelCD OperationQueue.  This OperationQueue processes one Operation at a time protecting the Core Data stack from aperiodic crashing and data corruption. 
@@ -25,6 +27,4 @@ AutoLayout supported for iPhone size class portrait and landscape.
 	func testDataCleanErrorLogs()
 	func testDataCleanGarments()
 	func testBulkDataAdd()
-
-Demo Video: 
 
