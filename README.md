@@ -6,7 +6,7 @@ Demo Video: https://www.dropbox.com/s/82h4p25fkavntlk/AddGarment%20%202021-08-16
 
 Note: Open the project as a workspace. Start with "AddGarment.xcworkspace"
 
-AddGarment utilizes a MVI (Model-View-Intent) Architecture. Model-View-Intent is designed with reactive programming patterns.  The Model represents the state of the application.  Intent carries out the View Controller and navigation triggers.  View represents the view components and sub-views. 
+AddGarment utilizes a MVI (Model-View-Intent) Architecture with reactive programming patterns.  The Model represents the state of the application.  Intent carries out the View Controller and navigation triggers.  View represents the view components and sub-views. 
 
 The Model represents the state and data flow using the iOS Apple Framework Core Data as a Data Driven Event Driven (persistence) Architecture.  The “View and Intent” is realized with the View Controller and sub-views.  Using Core Data and its Fetch Controller features allows the View-Intent to register for data flow events of interest.  MVI and use of Core Data also allows for decoupling of modules or Packages that can tap into a centralized data flow.  Allowing business logic and Views/View Controllers (with changing events) to exist as modules/Swift Packages. 
 
@@ -33,7 +33,7 @@ AutoLayout supported for iPhone size class portrait and landscape.
 
 1. Find AddGarmentTests folder, then open AddGarmentTests.swift. 
 
-2. You run the following single test runs:
+2. You can run the following single test runs for the desired remove all or add all to the persistence layer:
 	func testDataCleanErrorLogs(),
 	func testDataCleanGarments(),
 	func testBulkDataAdd()
