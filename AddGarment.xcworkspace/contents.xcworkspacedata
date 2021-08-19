@@ -7,9 +7,6 @@
       <FileRef
          location = "group:Mobile Technical Assessment.pdf">
       </FileRef>
-      <FileRef
-         location = "group:assessment tips.pdf">
-      </FileRef>
    </Group>
    <FileRef
       location = "group:AddGarment/AddGarment.xcodeproj">
