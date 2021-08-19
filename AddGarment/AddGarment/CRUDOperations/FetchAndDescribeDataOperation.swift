@@ -12,13 +12,26 @@ import DataFlowFunnelCD
 
 /// Fetch all tables and print out all for debug. 
 /// Operation conformance
+/// Try-Catch: If an error is thrown the catch will capture the error description, assign a type level integer for UX
+///             or analytics data flow into web services, and a timeStamp.  This error will be placed in persistence
+///             and listeners and business logic will handle announcements and UX controll.  This decouples the error,
+///             captures the error, allows for navigation commands and popup views to be displayed micro-seconds later.
+///             Modularization and de-coupling errors. 
 final class FetchAndDescribeDataOperation: Operation {
     
     override init() {
         super.init()
     }
 
-    
+    /// Main entry point running this operation task as a thread
+    ///
+    /// - Parameter value: none
+    /// - Returns: none
+    /// Try-Catch: If an error is thrown the catch will capture the error description, assign a type level integer for UX
+    ///             or analytics data flow into web services, and a timeStamp.  This error will be placed in persistence
+    ///             and listeners and business logic will handle announcements and UX control.  This decouples the error,
+    ///             captures the error, allows for navigation commands and popup views to be displayed micro-seconds later.
+    ///             Modularization and de-coupling errors.
     override func main() {
         
         guard !isCancelled else { return }

@@ -128,6 +128,12 @@ class GarmentList : UIViewController, UITableViewDelegate {
     ///
     /// - Parameter value: none
     /// - Returns: none, alters the data source from a sorted core data request.
+    /// Try-Catch: If an error is thrown the catch will capture the error description, assign a type level integer for UX
+    ///             or analytics data flow into web services, take a timeStamp, and place this into a DataFlowFunnelCD
+    ///             Operation. This error will be placed in persistence and listeners and business logic will handle
+    ///             announcements and UX control from various locations within the bundle. This decouples the error,
+    ///             captures the error, allows for navigation commands and popup
+    ///             views to be displayed micro-seconds later. Basically de-coupling errors from the catch.
     private func resortDataSource() {
         
         let managedContextCharacter =  DataFlowFunnel.shared.getPersistentContainerRef().viewContext
@@ -196,6 +202,12 @@ class GarmentList : UIViewController, UITableViewDelegate {
     ///
     /// - Parameter value: none
     /// - Returns: none, pulls all garments
+    /// Try-Catch: If an error is thrown the catch will capture the error description, assign a type level integer for UX
+    ///             or analytics data flow into web services, take a timeStamp, and place this into a DataFlowFunnelCD
+    ///             Operation. This error will be placed in persistence and listeners and business logic will handle
+    ///             announcements and UX control from various locations within the bundle. This decouples the error,
+    ///             captures the error, allows for navigation commands and popup
+    ///             views to be displayed micro-seconds later. Basically de-coupling errors from the catch.
     private func setupFetchControllers() {
         do {
             try self.fetchAllGarmentsRequestController.performFetch()

@@ -46,7 +46,14 @@ class ErrorLogDemarcation : NSObject {
     /// Sets up the core data fetch controllers (subscribes)
     ///
     /// - Parameter value: none
-    /// - Returns: none, but initializes the lazy load fetchAllErrorLogsRequestController and processes the initial fetch. 
+    /// - Returns: none, but initializes the lazy load fetchAllErrorLogsRequestController and processes the initial fetch.
+    ///
+    /// Try-Catch: If an error is thrown the catch will capture the error description, assign a type level integer for UX
+    ///             or analytics data flow into web services, take a timeStamp, and place this into a DataFlowFunnelCD
+    ///             Operation. This error will be placed in persistence and listeners and business logic will handle
+    ///             announcements and UX control from various locations within the bundle. This decouples the error,
+    ///             captures the error, allows for navigation commands and popup
+    ///             views to be displayed micro-seconds later. Basically de-coupling errors from the catch.
     private func setupFetchControllersDemarc() {
         
         do {
