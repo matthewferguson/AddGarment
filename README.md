@@ -25,7 +25,11 @@ DataFlowFunnelCD  - https://github.com/matthewferguson/DataFlowFunnelCD
 4) Bundle - App main, app scene, core data schema, and CRUDOperations,
 5) Add Garment Tests - cleaning and adding test data into the core data persistence. 
 
-Designed on Xcode Version 12.5.1 (12E507) and supports iOS 13 and 14 SDK. 
+UX Design notes:
+
+1. Font "Noteworthy-Bold" was chosen for the closeness to the UX specifications. 
+
+Runs on Xcode Version 12.5.1 (12E507) and supports iOS 13 and 14 SDK. 
 
 AutoLayout supported for iPhone size class portrait and landscape. 
 
