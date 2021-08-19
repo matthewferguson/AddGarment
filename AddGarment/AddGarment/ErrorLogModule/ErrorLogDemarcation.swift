@@ -53,6 +53,8 @@ class ErrorLogDemarcation : NSObject {
             try self.fetchAllErrorLogsRequestController.performFetch()
             let priorityErrorCollection = self.fetchAllErrorLogsRequestController.fetchedObjects!
             for (singleErrorMsg) in priorityErrorCollection {
+                /// normally this would be a spot to send logs of errors over the network, but print is sufficient for
+                ///  for a short-term coding project. 
                 print("ERRORLOG AddGarment Received == \(String(describing: singleErrorMsg.timeStamp)) : Level Type == \(singleErrorMsg.type) : Error Message == \(String(describing: singleErrorMsg.errorDescription))")
             }
         } catch {

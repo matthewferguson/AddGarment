@@ -25,9 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.refDataFlowFunnel.setModelName(to: "AddGarmentModel" )
         self.refDataFlowFunnel.setTargetBundleIdentifier(bundleId: "com.matthewferguson.AddGarment")
         
-  
-        //DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
-        
         // start the error log operations. running to recieve error log events and prints to console for now.
         self.errorLogDemarcationProcessing = ErrorLogDemarcation()
         
