@@ -12,10 +12,6 @@ import DataFlowFunnelCD
 
 final class XCTestRemoveAllErrorLogOperation: Operation {
  
-    /// <#Description#>
-    ///
-    /// - Parameter value: <#value description#>
-    /// - Returns: <#return value description#>
     override init(){
         super.init()
     }

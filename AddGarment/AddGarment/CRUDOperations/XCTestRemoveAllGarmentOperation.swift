@@ -13,10 +13,6 @@ import DataFlowFunnelCD
 /// UITableViewDelegate conformance
 final class XCTestRemoveAllGarmentOperation: Operation {
     
-    /// <#Description#>
-    ///
-    /// - Parameter value: <#value description#>
-    /// - Returns: <#return value description#>
     override init(){
         super.init()
     }
